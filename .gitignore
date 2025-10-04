@@ -1,0 +1,21 @@
+# Python / build
+.venv/
+__pycache__/
+*.pyc
+dist/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+
+# Data & artifacts
+data/raw/
+data/parquet/
+data/tmp/
+reports/*.pdf
+reports/*.html
+notebooks/.ipynb_checkpoints/
+
+# Env
+.env

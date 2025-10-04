@@ -1,0 +1,15 @@
+services:
+  timescaledb:
+    image: timescale/timescaledb-ha:pg16-all
+    container_name: timescaledb
+    environment:
+      POSTGRES_DB: ${TIMESCALE_DB:-market}
+      POSTGRES_USER: ${TIMESCALE_USER:-market}
+      POSTGRES_PASSWORD: ${TIMESCALE_PASSWORD:-market}
+      TZ: UTC
+    ports:
+      - "${TIMESCALE_PORT:-5432}:5432"
+    volumes:
+      - ./infra/pgdata:/var/lib/postgresql/data
+      - ./infra/init:/docker-entrypoint-initdb.d
+    restart: unless-stopped

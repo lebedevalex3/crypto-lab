@@ -1,0 +1,29 @@
+repos:
+  # 1. Ruff (быстрый линтер + автофикс)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff
+        args: [--fix]       # автоматически исправляет ошибки
+      - id: ruff-format    # форматирует по PEP8 (аналог black)
+
+  # 2. Black (строгий автоформаттер Python-кода)
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+
+  # 3. isort (сортировка импортов)
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+
+  # 4. Базовые проверки от pre-commit-hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-merge-conflict   # проверка, что не осталось >>>>>> в коде
+      - id: end-of-file-fixer      # гарантирует \n в конце файла
+      - id: mixed-line-ending      # единый стиль переноса строк (LF)
+      - id: trailing-whitespace    # удаляет висячие пробелы
