@@ -1,41 +1,33 @@
-[project]
+[tool.poetry]
 name = "crypto-lab"
 version = "0.1.0"
 description = "Data pipeline & QC for OHLCV"
-authors = [
-    {name = "Alex Lebedev",email = "lebedevalex3@gmail.com"}
-]
+authors = ["Alex Lebedev <lebedevalex3@gmail.com>"]
 readme = "README.md"
-requires-python = ">=3.12, <4.0"
-dependencies = [
-    "pandas (>=2.3.3,<3.0.0)",
-    "pyarrow (>=21.0.0,<22.0.0)",
-    "numpy (>=2.3.3,<3.0.0)",
-    "python-dotenv (>=1.1.1,<2.0.0)",
-    "pydantic-settings (>=2.11.0,<3.0.0)",
-    "matplotlib (>=3.10.6,<4.0.0)",
-    "jupyter (>=1.1.1,<2.0.0)",
-    "ccxt (>=4.5.7,<5.0.0)",
-    "loguru (>=0.7.3,<0.8.0)",
-    "rich (>=14.1.0,<15.0.0)"
-]
+license = "MIT"
 
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^2.3.3"
+pyarrow = "^21.0.0"
+numpy = "^2.3.3"
+python-dotenv = "^1.1.1"
+pydantic-settings = "^2.11.0"
+matplotlib = "^3.10.6"
+jupyter = "^1.1.1"
+ccxt = "^4.5.7"
+loguru = "^0.7.3"
+rich = "^14.1.0"
 
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[dependency-groups]
-dev = [
-    "ruff (>=0.13.3,<0.14.0)",
-    "black (>=25.9.0,<26.0.0)",
-    "isort (>=6.1.0,<7.0.0)",
-    "mypy (>=1.18.2,<2.0.0)",
-    "pytest (>=8.4.2,<9.0.0)",
-    "pytest-cov (>=7.0.0,<8.0.0)",
-    "pre-commit (>=4.3.0,<5.0.0)",
-    "types-python-dateutil (>=2.9.0.20250822,<3.0.0.0)"
-]
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.13.3"
+black = "^25.9.0"
+isort = "^6.1.0"
+mypy = "^1.18.2"
+pytest = "^8.4.2"
+pytest-cov = "^7.0.0"
+pre-commit = "^4.3.0"
+types-python-dateutil = "^2.9.0.20250822"
 
 [tool.black]
 line-length = 100
@@ -48,13 +40,15 @@ line_length = 100
 [tool.ruff]
 line-length = 100
 target-version = "py312"
-
-[tool.roof.lint]
-select = ["E","F","I","B","UP","ANN","SIM"]
-ignore = ["ANN101","ANN102"]  # не требуем аннотации self/cls
+select = ["E", "F", "I", "B", "UP", "ANN", "SIM"]
+ignore = ["ANN101", "ANN102"]
 
 [tool.mypy]
 python_version = "3.12"
 strict = false
 warn_unused_ignores = true
 ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core>=1.8.0"]
+build-backend = "poetry.core.masonry.api"
