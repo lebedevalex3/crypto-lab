@@ -1,0 +1,22 @@
+# Python / Poetry
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pytest_cache/
+.mypy_cache/
+.pytest_cache/
+.venv/
+.env
+
+# Poetry
+poetry.lock
+
+# Data / Notebooks
+data/
+*.ipynb_checkpoints
+
+# IDE / system
+.vscode/
+.idea/
+.DS_Store

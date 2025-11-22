@@ -1,0 +1,29 @@
+[project]
+name = "crypto-lab"
+version = "0.1.0"
+description = "Research crypto lab for loading, cleaning and backtesting OHLCV data"
+authors = [
+    {name = "Alex Lebedev",email = "lebedevalex3@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2.0",
+    "ccxt>=4.0.0",
+    "pyarrow>=17.0.0"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+
+packages = [
+    { include = "crypto_lab", from = "src" }
+]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+jupyter = "^1.0.0"
