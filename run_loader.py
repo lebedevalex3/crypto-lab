@@ -1,12 +1,25 @@
-from crypto_lab.lab_core.loader.ccxt_loader_v0 import download_ohlcv_to_parquet
-from datetime import datetime, timezone
+from crypto_lab.lab_core.pipeline.pipeline_v0 import load_and_qc
+from crypto_lab.lab_core.qc.dashboard_v0 import pipeline_qc_dashboard
 
-path = download_ohlcv_to_parquet(
+# 1. Load data + QC
+result = load_and_qc(
     exchange_name="binance",
     symbol="BTC/USDT",
     timeframe="1m",
-    since=datetime(2024, 1, 1, tzinfo=timezone.utc),
-    limit=100
+    limit=200,
+    save=False
 )
 
-print("Saved to:", path)
+df = result["df"]
+qc = result["qc"]
+
+# 2. Generate dashboard
+path = pipeline_qc_dashboard(
+    df=df,
+    qc=qc,
+    symbol="BTC/USDT",
+    timeframe="1m",
+    output_dir="data/qc_reports"
+)
+
+print("Dashboard saved:", path)
